@@ -4,13 +4,13 @@
 <li>Update ER Schema with Prof feedback</li>
 <li>Update database with Prof feedback</li>
 <h3>Seller usability:</h3>
-<li>Register as a new member</li>
+<li>Register as a new member - Alyssa</li>
 <li>Add a product (price, quantity, delivery).</li>
 <li>Edit a product.</li>
 <li>Browse other users.</li>
 <li>View selling history.</li>
 <h3>Purchaser usability:</h3>
-<li>Register as a new member.</li>
+<li>Register as a new member - Alyssa</li>
 <li>Browse other users.</li>
 <li>Generate an Order.</li>
 <li>Purchase products.</li>
