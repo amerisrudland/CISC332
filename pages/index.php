@@ -7,7 +7,19 @@
 <body>
 <?php
   //Create a user session or resume an existing one
- session_start();
+ //session_start();
+  $host = "localhost";
+ $user = "root";
+ $password = "toor";
+ $database = "farmers market";
+ try {
+    $con = new mysqli($host,$user,$password, $database);
+}
+ 
+// show error
+catch(Exception $exception){
+    echo "Connection error: " . $exception->getMessage();
+}
  ?>
 Put landing page shit here!
 <p>
@@ -20,7 +32,7 @@ This is shit such as:
 	<li>Pretty things</li>
 </ul>
 <?php  
-$sql = "SELECT ProdNo, Name, SellerID FROM seller";
+$sql = "SELECT ProdNo, Name, SellerID FROM `fav_products`";
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
@@ -31,12 +43,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-?>
-<?php
-   mysqli_query($cxn,"select * from `seller`;");
-   echo "seller loaded.<br />";       
-   mysqli_close($cxn); 
-echo "test.";
 ?>
 
 </body>

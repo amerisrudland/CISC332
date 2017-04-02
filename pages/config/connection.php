@@ -1,4 +1,4 @@
-<?php
+]<?php
  // used to connect to the database
  $host = "localhost";
  $user = "root";
