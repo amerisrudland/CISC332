@@ -3,7 +3,7 @@
 <h2>To Do's:(cross these out with strike tag when done)</h2>
 <li>Update ER Schema with Prof feedback - Sarah</li>
 <li>Update database with Prof feedback - Sarah</li>
-<li> Make SQL statements and upload to Git/Drive - Sarah X </li>
+<li><strike> Make SQL statements and upload to Git/Drive - Sarah</strike></li>
 <h3>Seller usability:</h3>
 <li>Register as a new member - Alyssa</li>
 <li>Add a product (price, quantity, delivery) - Ameris</li>
