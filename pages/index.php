@@ -37,9 +37,11 @@ $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
+	echo "<table> <tr><th>ProdNo</th><th>Item</th><th>Seller</th><th>test column</th></tr>";
     while($row = $result->fetch_assoc()) {
-        echo "ProdNo: " . $row["ProdNo"]. " - Name: " . $row["Name"]. " " . $row["SellerID"]. "<br>";
+        echo " <tr> <td>" . $row["ProdNo"]. "</td><td>" . $row["Name"]. "</td><td>" . $row["SellerID"]. '</td><td><a href="https://google.ca">Google This</a></td><br>';
     }
+	echo"</table";
 } else {
     echo "0 results";
 }
