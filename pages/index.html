@@ -1,9 +1,14 @@
-<DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
 	<head>
+	 <meta charset="UTF-8"> 
 			<title>Welcome | Farmer's Market</title>
 	</head>
 <body>
+<?php
+  //Create a user session or resume an existing one
+ session_start();
+ ?>
 Put landing page shit here!
 <p>
 This is shit such as:
@@ -14,5 +19,17 @@ This is shit such as:
 	<li>Other general info</li>
 	<li>Pretty things</li>
 </ul>
+<?php echo '<p>Hello World</p>'; ?>
+ 
+
+<?php
+   
+   mysqli_query($cxn,"select * from `seller`;");
+   echo "seller loaded.<br />";       
+   mysqli_close($cxn); 
+echo "test.";
+?>
+<?php phpinfo(); ?>
+
 </body>
 </html>
