@@ -26,6 +26,6 @@
 <li>Add and remove users.</li>
 
 <h3>From the deliverable requirements:</h3>
-<li>Create a sample database with enough data to adequately demonstrate all of the required functionality - Sarah</li>
+<li><strike>Create a sample database with enough data to adequately demonstrate all of the required functionality - Sarah</strike></li>
 <li>Prepare a script to follow that allows you to show all of the features of your application in a logical sequence in a 10 minute demo.</li>
-<li>Print out a copy of the ER schema available for reference during the demo</li>
+<li>Print out a copy of the ER schema available for reference during the demo - Sarah</li>

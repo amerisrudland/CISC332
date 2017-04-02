@@ -21,7 +21,7 @@ CREATE TABLE Products(
     SellerID        INTEGER(6)        NOT NULL,
     Date_Listed     DATE            NOT NULL,
     Quantity         INTEGER,
-    Unit            VARCHAR(4)    NOT NULL,
+    Unit            VARCHAR(8)    NOT NULL,
     Price_Per_Unit    DECIMAL(5,2)     NOT NULL,
 	Days_To_Delivery 	INTEGER   	NOT NULL, 
     PRIMARY KEY (ProdNo), 
