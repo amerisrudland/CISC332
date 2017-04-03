@@ -5,13 +5,17 @@
 			<title>Favourite Products | Farmer's Market</title>
 	</head>
 <body>
+<?php include_once 'config/connection.php';?>
+
+<?php //include 'delete.php';?>
 <?php
   //Create a user session or resume an existing one
- //session_start();
+ session_start();
+ /*
   $host = "localhost";
  $user = "root";
  $password = "toor";
- $database = "farmers market";
+ $database = "market2";
  try {
     $con = new mysqli($host,$user,$password, $database);
 }
@@ -20,20 +24,21 @@
 catch(Exception $exception){
     echo "Connection error: " . $exception->getMessage();
 }
+*/
  ?>
 <h1>Favourite Products</h1>
 
 <?php  
-$sql = "SELECT ProdNo, Name, SellerID FROM `fav_products` where PurchaserID=780033540";
+$sql = "SELECT * FROM Fav_Products WHERE Fav_Products.PurchaserID = 6";
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo "<table> <tr><th>ProdNo</th><th>Item</th><th>Seller</th><th> </th></tr>";
+	echo "<table> <tr><th>Item</th><th>Seller</th><th> </th></tr>";
     while($row = $result->fetch_assoc()) {
-		$fkey = $row["ProdNo"];
-        echo " <tr> <td>" . $fkey. "</td><td>" . $row["Name"]. '</td><td>' . $row["SellerID"]. '</td><td> <form action="delete.php?ProdNo=$row["ProdNo"]  method="post"><input type="hidden" name="name" value="">
-                <input type="submit" name="ProdNo" value="Delete"></form></td><br>';
+		//$fkey = $row["ProdNo"];
+        echo " <tr> <td>" . $row["ProdNo"]. '</td><td>' . $row["PurchaserID"].'</td><td><form action="delete.php?ProdNo=' . $row["ProdNo"] . '"  method="post">
+                <input type="submit" name="delete" value="Delete"></form></td><br>';
     }
 	echo"</table>";
 } else {
@@ -49,6 +54,5 @@ if ($conn->query($sql) === TRUE) {
 }
 */
 ?>
-
 </body>
 </html>

@@ -1,11 +1,11 @@
-]<?php
+<?php
  // used to connect to the database
  $host = "localhost";
  $user = "root";
  $password = "toor";
- $database = "farmers market";
+ $database = "market2";
  try {
-    $con = new mysqli($host,$username,$password, $database);
+    $con = new mysqli($host,$user,$password, $database);
 }
  
 // show error

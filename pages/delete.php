@@ -1,12 +1,17 @@
 <?php
-if(isset($_POST['ProdNo'])){
+if(isset($_POST['delete'])){
+	include_once 'config/connection.php';
 //Define the query
-echo "got here <br />";
-$delete = $_POST['ProdNo'];
-$query = "DELETE FROM fav_products WHERE ProdNo=$delete LIMIT 1";
-
+$query = "DELETE FROM fav_products WHERE ProdNo=? AND PurchaserID = 6";
+echo "bjyf,hb";
 //sends the query to delete the entry
-mysql_query ($query);
+if($stmt = $con->prepare($query)){
+			$stmt->bind_Param("i", $_GET['ProdNo']);
+			$stmt->execute();
+			die();
+		} else{
+			echo "bad query";
+		}
 }
 if (mysql_affected_rows() == 1) { 
 //if it updated
