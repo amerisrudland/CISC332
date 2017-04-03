@@ -2,7 +2,7 @@
 <html>
 	<head>
 	 <meta charset="UTF-8"> 
-			<title>Welcome | Farmer's Market</title>
+			<title>My Products | Farmer's Market</title>
 	</head>
 <body>
 <?php
@@ -21,25 +21,17 @@ catch(Exception $exception){
     echo "Connection error: " . $exception->getMessage();
 }
  ?>
-<a href="favproducts.php">View Favourites List</a>
-<p>
-This is shit such as:
-<p>
-<ul>
-	<li>Log In</li>
-	<li>Sign Up</li>
-	<li>Other general info</li>
-	<li>Pretty things</li>
-</ul>
+<h1>My Products</h1>
+
 <?php  
-$sql = "SELECT ProdNo, Name, SellerID FROM `fav_products`";
+$sql = "SELECT Name, Quantity, Unit, Price_Per_Unit, Date_Listed  FROM `products` WHERE SellerID=100033550";
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo "<table> <tr><th>ProdNo</th><th>Item</th><th>Seller</th><th>test column</th></tr>";
+	echo "<table> <tr><th>Item</th><th>Quantity</th><th>Unit</th><th>Price/Unit</th><th>Date Listed</th><th></th><th></th></tr>";
     while($row = $result->fetch_assoc()) {
-        echo " <tr> <td>" . $row["ProdNo"]. "</td><td>" . $row["Name"]. "</td><td>" . $row["SellerID"]. '</td><td><a href="https://google.ca">Google This</a></td><br>';
+        echo " <tr> <td>" . $row["Name"]. "</td><td>" . $row["Quantity"]. "</td><td>" . $row["Unit"]. "</td><td>" . $row["Price_Per_Unit"]. "</td><td>" . $row["Date_Listed"]. '</td><td><a href="https://google.ca">Google</a></td><td>edit</td><br>';
     }
 	echo"</table";
 } else {
