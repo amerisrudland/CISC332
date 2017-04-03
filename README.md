@@ -6,7 +6,7 @@
 <li><strike> Make SQL statements and upload to Git/Drive - Sarah</strike></li>
 <h3>Seller usability:</h3>
 <li>Register as a new member - Alyssa</li>
-<li>Add a product (price, quantity, delivery) - Ameris</li>
+<li><strike>Add a product (price, quantity, delivery) - Ameris</strike></li>
 <li><strike>View products - Ameris</strike> </li>
 <li>Edit a product - Ameris</li>
 <li>Browse other users.</li>
