@@ -1,6 +1,6 @@
 <?php
-if(isset($_POST['delete'])){
-	include_once 'config/connection.php';
+include_once 'config/connection.php';
+if(isset($_POST['deleteFav'])){
 //Define the query
 $query = "DELETE FROM fav_products WHERE ProdNo=? AND PurchaserID = 6";
 //sends the query to delete the entry

@@ -2,28 +2,44 @@
 <html>
 	<head>
 	 <meta charset="UTF-8"> 
-			<title>My Products | Farmer's Market</title>
+			<title>Edit Product | Farmer's Market</title>
 	</head>
 <body>
-<?php include 'addproduct.php';?>
 <?php include_once 'config/connection.php';?>
-<h1>My Products</h1>
+<h1>Edit Products</h1>
 
 <?php  
-$sql = "SELECT ProdNo, Name, Unit, Price_Per_Unit, UserName, Quantity AS QuantityAvailable, Delivery_Method, Days_To_Delivery FROM Products JOIN Seller ON Products.SellerID = Seller.ID ";
+// get query for specific product
+// editable form with current information
+// prepare and submit post query (Done)
+// redirect to my products
+if(isset($_POST['editProductBtn'])){
+//Define the query
+$query = "SELECT Name, Unit, Price_Per_Unit, UserName, Quantity AS QuantityAvailable, Delivery_Method, Days_To_Delivery FROM Products JOIN Seller ON Products.SellerID = Seller.ID WHERE ProdNo =?";
+//sends the query to delete the entry
+if($stmt = $con->prepare($query)){
+			$stmt->bind_Param("i", $_GET['ProdNo']);
+			$stmt->execute();
+			die();
+		} else{
+			echo "bad query";
+		}
+}
+/*
+$sql = "SELECT Name, Unit, Price_Per_Unit, UserName, Quantity AS QuantityAvailable, Delivery_Method, Days_To_Delivery FROM Products JOIN Seller ON Products.SellerID = Seller.ID WHERE ProdNo =?";
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
 	echo "<table> <tr><th>Item</th><th>Quantity</th><th>Unit</th><th>Price/Unit</th><th>Date Listed</th><th></th><th></th></tr>";
     while($row = $result->fetch_assoc()) {
-        echo " <tr> <td>" . $row["Name"]. "</td><td>" . $row["QuantityAvailable"]. "</td><td>" . $row["Unit"]. "</td><td>" . $row["Price_Per_Unit"]. "</td><td>" . $row["Delivery_Method"]. '</td><td>' . $row["Days_To_Delivery"]. '</td><td><form name="editProd" id="editProd" action="editproduct.php?ProdNo=' . $row["ProdNo"]'" method="post"><input type="submit" id="editProductBtn" name="editProductBtn" value="Edit" /> </form></td><td><form name="deleteProd" id="deleteProd" action="delete.php?ProdNo=' . $row["ProdNo"] . '"  method="post">
-		<input type="submit" name="deleteProductBtn" value="Delete"></form></td><br />';
+        echo " <tr> <td>" . $row["Name"]. "</td><td>" . $row["QuantityAvailable"]. "</td><td>" . $row["Unit"]. "</td><td>" . $row["Price_Per_Unit"]. "</td><td>" . $row["Delivery_Method"]. '</td><td>' . $row["Days_To_Delivery"]. '</td><td>edit</td><td>delete</td><br />';
     }
 	echo"</table>";
 } else {
     echo "0 results";
 }
+*/
 ?>
 
 <!-- Add a new item -->

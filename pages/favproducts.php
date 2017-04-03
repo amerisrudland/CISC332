@@ -29,16 +29,16 @@ catch(Exception $exception){
 <h1>Favourite Products</h1>
 
 <?php  
-$sql = "SELECT * FROM Fav_Products WHERE Fav_Products.PurchaserID = 6";
+$sql = "SELECT SellerID, Fav_Products.ProdNo, Name, UserName AS SellerName FROM Fav_Products JOIN Products JOIN Seller ON (Products.ProdNo = Fav_Products.ProdNo AND Seller.ID = Products.SellerID) WHERE Fav_Products.PurchaserID = 6";
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo "<table> <tr><th>Item</th><th>Seller</th><th> </th></tr>";
+	echo "<table > <tr><th>Item</th><th>Seller</th><th> </th></tr>";
     while($row = $result->fetch_assoc()) {
-		//$fkey = $row["ProdNo"];
-        echo " <tr> <td>" . $row["ProdNo"]. '</td><td>' . $row["PurchaserID"].'</td><td><form action="delete.php?ProdNo=' . $row["ProdNo"] . '"  method="post">
-                <input type="submit" name="delete" value="Delete"></form></td><br>';
+		$url = "Seller.php?SellerID=" . $row['SellerID'];
+        echo " <tr > <td>" . $row["Name"]. "</td><td onclick=\"window.location.href='" . $url . "'\">" . $row["SellerName"].'</td><td><form action="delete.php?ProdNo=' . $row["ProdNo"] . '"  method="post">
+                <input type="submit" name="deleteFav" value="Delete"></form></td><br>';
     }
 	echo"</table>";
 } else {
