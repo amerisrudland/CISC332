@@ -7,7 +7,7 @@
 <h3>Seller usability:</h3>
 <li>Register as a new member - Alyssa</li>
 <li>Add a product (price, quantity, delivery) - Ameris</li>
-<li>View products - Ameris </li>
+<li><strike>View products - Ameris</strike> </li>
 <li>Edit a product - Ameris</li>
 <li>Browse other users.</li>
 <li>View selling history.</li>
@@ -16,9 +16,10 @@
 <li>Browse other users.</li>
 <li>Generate an Order.</li>
 <li>Purchase products.</li>
+<li>Add product to list of favourite Products</li>
 <li>View purchasing history.</li>
 <li>See upcoming deliveries.</li>
-<li>Generate and edit a list of favourite Products.</li>
+<li><strike>Edit list of favourite Products. - Ameris</strike></li>
 <h3>Administration usability:</h3>
 <li>View top sellers/purchasers.</li>
 <li>View transactions.</li>
