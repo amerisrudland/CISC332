@@ -1,9 +1,7 @@
 /*register a seller*/
-INSERT INTO User('UserName','Password') VALUES ('$Name$','$Password$'); 
+INSERT INTO User('UserName','Password','Role') VALUES ('$Name$','$Password$','Seller'); 
 INSERT INTO `seller` (`ID`,`UserName`, `Address`, `Delivery_Method`, `Checking_Number`) 
 VALUES ((SELECT ID FROM USER where UserName = '$Name$'),'$Name$', '$Address$', '$Delivery_Method$', '$CheckNum$'); 
-
-
 
 /* add a product */ 
 INSERT INTO Products (Name, SellerID, Date_Listed, Quantity, Unit, Price_Per_Unit, Days_To_Delivery)
@@ -27,7 +25,7 @@ SELECT UserName FROM Purchaser;
 SELECT Name, Quantity_Bought, Date_Sold, Delivery_Date, UserName FROM FoodOrder JOIN Products JOIN Purchaser ON (Products.ProdNo = foodorder.ProdNo AND Purchaser.ID = FoodOrder.PurchaserID) WHERE FoodOrder.SellerID = #UserLoggedIn#; 
 
 /*register a purchaser*/ 
-INSERT INTO User('UserName','Password') VALUES ('$Name$','$Password$'); 
+INSERT INTO User('UserName','Password','Role') VALUES ('$Name$','$Password$','Purchaser'); 
 INSERT INTO `purchaser` (`ID`,`UserName`, `Address`, `Credit_Card`) VALUES
 ((SELECT ID FROM USER where UserName = '$Name$'),'$Name$', '$Address$', '$Credit_Card$');
 
@@ -50,8 +48,8 @@ SELECT Name, Quantity_Bought, Date_Sold, Delivery_Date, UserName FROM FoodOrder 
 SELECT Name, Quantity_Bought, Date_Sold, Delivery_Date, UserName FROM FoodOrder JOIN Products JOIN Seller ON (Products.ProdNo = foodorder.ProdNo AND Seller.ID = FoodOrder.SellerID) WHERE FoodOrder.PurchaserID = #UserLoggedIn# AND Delivery_Date >= CURDATE();
 
 /*Generate a list of favourite products*/ 
-
 SELECT Name, UserName AS SellerName FROM Fav_Products JOIN Products JOIN Seller ON (Products.ProdNo = Fav_Products.ProdNo AND Seller.ID = Products.SellerID) WHERE Fav_Products.PurchaserID = #UserLoggedIn#; 
+
 /*To add product*/
 INSERT INTO fav_products('ProdNo','PurchaserID') VALUES (#SelectedProductNo#,#UserLoggedIn#); 
 
