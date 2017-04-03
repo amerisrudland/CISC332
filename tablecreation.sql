@@ -2,6 +2,7 @@ CREATE TABLE User(
 	ID  INTEGER(6) NOT NULL AUTO_INCREMENT, 
 	UserName VARCHAR(15) NOT NULL UNIQUE, 
 	Password VARCHAR(15) NOT NULL, 
+	Role SET('Admin','Seller','Purchaser') NOT NULL, 
 	PRIMARY KEY (ID) 
 );
 
@@ -58,6 +59,5 @@ CREATE TABLE FoodOrder(
 	FOREIGN KEY (PurchaserID) references Purchaser(ID) on delete cascade on update cascade, 
 	FOREIGN KEY (SellerID) references Seller(ID) on delete cascade on update cascade
 );
-
 
 
