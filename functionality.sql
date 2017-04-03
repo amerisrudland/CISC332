@@ -59,10 +59,20 @@ INSERT INTO fav_products('ProdNo','PurchaserID') VALUES (#SelectedProductNo#,#Us
 DELETE FROM fav_products WHERE ProdNo = #SelectedProductNo# AND PurchaserID = #Userloggedin#;
 
 /*View top sellers*/  
-SELECT UserName, COUNT(*) AS OrdersFilled FROM Seller JOIN FoodOrder WHERE Seller.ID = FoodOrder.SellerID GROUP BY OrdersFilled; 
+
+SELECT UserName, COUNT(SellerID) AS OrdersFilled FROM FoodOrder JOIN Seller ON foodorder.SellerID = Seller.ID GROUP BY SellerID ORDER BY OrdersFilled DESC; 
+
+/*View top purchasers*/ 
+SELECT UserName, COUNT(PurchaserID) AS OrdersMade FROM FoodOrder JOIN Purchaser ON foodorder.PurchaserID = Purchaser.ID GROUP BY PurchaserID ORDER BY OrdersMade DESC; 
+
+/*Count users, sellers, purchasers*/ 
+SELECT COUNT(*) AS ActiveUsers FROM User; 
 
 
+SELECT COUNT(*) AS ActiveSellers FROM Seller; 
 
 
+SELECT COUNT(*) AS ActivePurchasers FROM Purchaser; 
 
-
+/*Delete a User*/ 
+DELETE FROM User WHERE UserName = $SelectedUserName$; 
