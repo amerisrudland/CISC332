@@ -44,15 +44,7 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-/*
-$sql = "DELETE FROM MyGuests WHERE id=3";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Record deleted successfully";
-} else {
-    echo "Error deleting record: " . $conn->error;
-}
-*/
 ?>
 </body>
 </html>

@@ -3,7 +3,6 @@ if(isset($_POST['delete'])){
 	include_once 'config/connection.php';
 //Define the query
 $query = "DELETE FROM fav_products WHERE ProdNo=? AND PurchaserID = 6";
-echo "bjyf,hb";
 //sends the query to delete the entry
 if($stmt = $con->prepare($query)){
 			$stmt->bind_Param("i", $_GET['ProdNo']);
