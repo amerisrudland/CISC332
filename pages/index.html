@@ -19,17 +19,25 @@ This is shit such as:
 	<li>Other general info</li>
 	<li>Pretty things</li>
 </ul>
-<?php echo '<p>Hello World</p>'; ?>
- 
+<?php  
+$sql = "SELECT ProdNo, Name, SellerID FROM seller";
+$result = $con->query($sql);
 
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+        echo "ProdNo: " . $row["ProdNo"]. " - Name: " . $row["Name"]. " " . $row["SellerID"]. "<br>";
+    }
+} else {
+    echo "0 results";
+}
+?>
 <?php
-   
    mysqli_query($cxn,"select * from `seller`;");
    echo "seller loaded.<br />";       
    mysqli_close($cxn); 
 echo "test.";
 ?>
-<?php phpinfo(); ?>
 
 </body>
 </html>
