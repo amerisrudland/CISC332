@@ -50,8 +50,8 @@ SELECT Name, Quantity_Bought, Date_Sold, Delivery_Date, UserName FROM FoodOrder 
 SELECT Name, Quantity_Bought, Date_Sold, Delivery_Date, UserName FROM FoodOrder JOIN Products JOIN Seller ON (Products.ProdNo = foodorder.ProdNo AND Seller.ID = FoodOrder.SellerID) WHERE FoodOrder.PurchaserID = #UserLoggedIn# AND Delivery_Date >= CURDATE();
 
 /*Generate a list of favourite products*/ 
-SELECT Name, Quantity_Bought, Date_Sold, Delivery_Date, UserName FROM FoodOrder JOIN Products JOIN Seller ON (Products.ProdNo = foodorder.ProdNo AND Seller.ID = FoodOrder.SellerID) WHERE FoodOrder.PurchaserID = #UserLoggedIn#; 
 
+SELECT Name, UserName AS SellerName FROM Fav_Products JOIN Products JOIN Seller ON (Products.ProdNo = Fav_Products.ProdNo AND Seller.ID = Products.SellerID) WHERE Fav_Products.PurchaserID = #UserLoggedIn#; 
 /*To add product*/
 INSERT INTO fav_products('ProdNo','PurchaserID') VALUES (#SelectedProductNo#,#UserLoggedIn#); 
 
