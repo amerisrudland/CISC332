@@ -20,18 +20,17 @@ $query = "SELECT Name, Unit, Price_Per_Unit, UserName, Quantity AS QuantityAvail
 if($stmt = $con->prepare($query)){
 			$stmt->bind_Param("i", $_GET['ProdNo']);
 			$stmt->execute();
-			die();
+			$result = $stmt->get_result();
 		} else{
 			echo "bad query";
 		}
 }
 /*
-$sql = "SELECT Name, Unit, Price_Per_Unit, UserName, Quantity AS QuantityAvailable, Delivery_Method, Days_To_Delivery FROM Products JOIN Seller ON Products.SellerID = Seller.ID WHERE ProdNo =?";
-$result = $con->query($sql);
+
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo "<table> <tr><th>Item</th><th>Quantity</th><th>Unit</th><th>Price/Unit</th><th>Date Listed</th><th></th><th></th></tr>";
+	echo "<table> <tr><th>Item</th><th>Quantity</th><th>Unit</th><th>Price/Unit</th><th>Average Delivery Days</th></tr>";
     while($row = $result->fetch_assoc()) {
         echo " <tr> <td>" . $row["Name"]. "</td><td>" . $row["QuantityAvailable"]. "</td><td>" . $row["Unit"]. "</td><td>" . $row["Price_Per_Unit"]. "</td><td>" . $row["Delivery_Method"]. '</td><td>' . $row["Days_To_Delivery"]. '</td><td>edit</td><td>delete</td><br />';
     }

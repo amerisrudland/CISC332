@@ -12,6 +12,19 @@ if($stmt = $con->prepare($query)){
 			echo "bad query";
 		}
 }
+elseif(isset($_POST['deleteProductBtn'])){
+//Define the query
+$query = "DELETE FROM products WHERE ProdNo=? AND SellerID = ?";
+//sends the query to delete the entry
+$seller = 1;
+if($stmt = $con->prepare($query)){
+			$stmt->bind_Param("ii", $_GET['ProdNo'], $seller);
+			$stmt->execute();
+			die();
+		} else{
+			echo "bad query";
+		}
+}
 if (mysql_affected_rows() == 1) { 
 //if it updated
 ?>

@@ -10,12 +10,19 @@
 <h1>My Products</h1>
 
 <?php  
-$sql = "SELECT ProdNo, Name, Unit, Price_Per_Unit, UserName, Quantity AS QuantityAvailable, Delivery_Method, Days_To_Delivery FROM Products JOIN Seller ON Products.SellerID = Seller.ID ";
-$result = $con->query($sql);
+$seller = 1;
+// IF $SESSIONID=SELLER
+$sql = "SELECT ProdNo, Name, Unit, Price_Per_Unit, UserName, Quantity AS QuantityAvailable, Delivery_Method, Days_To_Delivery FROM Products JOIN Seller ON Products.SellerID = Seller.ID WHERE SellerID = ?";
+if($stmt = $con->prepare($sql))
+		{
+			$stmt->bind_Param("i", $seller);
+			$stmt->execute();
+			$result = $stmt->get_result();
+		}
 
 if ($result->num_rows > 0) {
     // output data of each row
-	echo "<table> <tr><th>Item</th><th>Quantity</th><th>Unit</th><th>Price/Unit</th><th>Date Listed</th><th></th><th></th></tr>";
+	echo "<table> <tr><th>Item</th><th>Quantity</th><th>Unit</th><th>Price/Unit</th><th>Delivery Method</th><th>Avg. Delivery days</th><th></th><th></th></tr>";
     while($row = $result->fetch_assoc()) {
         echo " <tr> <td>" . $row["Name"]. "</td><td>" . $row["QuantityAvailable"]. "</td><td>" . $row["Unit"]. "</td><td>" . $row["Price_Per_Unit"]. "</td><td>" . $row["Delivery_Method"]. '</td><td>' . $row["Days_To_Delivery"]. '</td><td><form name="editProd" id="editProd" action="editproduct.php?ProdNo=' . $row["ProdNo"]'" method="post"><input type="submit" id="editProductBtn" name="editProductBtn" value="Edit" /> </form></td><td><form name="deleteProd" id="deleteProd" action="delete.php?ProdNo=' . $row["ProdNo"] . '"  method="post">
 		<input type="submit" name="deleteProductBtn" value="Delete"></form></td><br />';
